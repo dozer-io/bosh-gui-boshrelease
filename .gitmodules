@@ -1,0 +1,3 @@
+[submodule "src/bosh-gui"]
+	path = src/bosh-gui
+	url = git@github.com:dozer-io/bosh-gui.git
