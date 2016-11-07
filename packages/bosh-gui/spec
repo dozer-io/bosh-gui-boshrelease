@@ -1,0 +1,5 @@
+---
+name: bosh-gui
+dependencies: []
+files:
+  - bosh-gui/dist/*
