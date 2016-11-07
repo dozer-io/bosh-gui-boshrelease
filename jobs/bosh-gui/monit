@@ -1,0 +1,5 @@
+check process bosh-gui
+  with pidfile /var/vcap/sys/run/bosh-gui/nginx.pid
+  start program "/var/vcap/jobs/bosh-gui/bin/monit_debugger bosh-gui_ctl '/var/vcap/jobs/bosh-gui/bin/ctl start'"
+  stop program "/var/vcap/jobs/bosh-gui/bin/monit_debugger bosh-gui_ctl '/var/vcap/jobs/bosh-gui/bin/ctl stop'"
+  group vcap
