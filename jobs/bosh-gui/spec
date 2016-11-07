@@ -11,4 +11,6 @@ templates:
   helpers/ctl_utils.sh: helpers/ctl_utils.sh
   config/nginx.conf: config/nginx.conf
   config/mime.types: config/mime.types
-  
+properties:
+  bosh-gui.target:
+    description: 'BOSH target ip:port'

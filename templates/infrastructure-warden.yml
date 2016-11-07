@@ -35,3 +35,7 @@ networks:
     gateway: 10.244.55.1
     static:
       - 10.244.55.2 - 10.244.55.60
+
+properties:
+  bosh-gui:
+    target: 192.168.50.4:25555
