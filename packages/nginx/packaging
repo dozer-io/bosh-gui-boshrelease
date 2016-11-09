@@ -4,24 +4,56 @@ echo "Extracting pcre..."
 tar xzvf nginx/pcre-8.39.tar.gz
 
 if [[ $? != 0 ]] ; then
-  echo "Failed extracting pcre"
-    exit 1
-    fi
+echo "Failed extracting pcre"
+exit 1
+fi
+
+echo "Extracting ngx_devel_kit..."
+tar xzvf nginx/ngx_devel_kit-0.3.0.tar.gz
+
+if [[ $? != 0 ]] ; then
+echo "Failed extracting ngx_devel_kit"
+exit 1
+fi
+
+echo "Extracting lua-nginx-module..."
+tar xzvf nginx/lua-nginx-module-0.10.7.tar.gz
+
+if [[ $? != 0 ]] ; then
+echo "Failed extracting lua-nginx-module"
+exit 1
+fi
+
+echo "Extracting headers-more..."
+tar xzvf nginx/headers-more-nginx-module-0.32.tar.gz
+
+if [[ $? != 0 ]] ; then
+echo "Failed extracting headers-more"
+exit 1
+fi
 
 echo "Extracting nginx..."
 tar xzvf nginx/nginx-1.11.5.tar.gz
 
 if [[ $? != 0 ]] ; then
-  echo "Failed extracting nginx"
-    exit 1
-    fi
+echo "Failed extracting nginx"
+exit 1
+fi
+
+
+export LUAJIT_LIB=/var/vcap/packages/lua/lib
+export LUAJIT_INC=/var/vcap/packages/lua/include/luajit-2.0
 
 echo "Building nginx..."
 cd nginx-1.11.5
 ./configure \
-  --prefix=${BOSH_INSTALL_TARGET} \
-    --with-pcre=../pcre-8.39 \
-      --with-http_ssl_module \
-        --with-http_dav_module
-        make
-        make install
+--with-ld-opt="-Wl,-rpath,/var/vcap/packages/lua/lib" \
+--prefix=${BOSH_INSTALL_TARGET} \
+--with-pcre=../pcre-8.39 \
+--add-module=../headers-more-nginx-module-0.32 \
+--add-module=../ngx_devel_kit-0.3.0 \
+--add-module=../lua-nginx-module-0.10.7 \
+--with-http_ssl_module \
+--with-http_dav_module
+make
+make install
