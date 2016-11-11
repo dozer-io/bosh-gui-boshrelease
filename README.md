@@ -1,4 +1,4 @@
-# BOSH Release for bosh-gui
+# BOSH Release for [The GUI for BOSH](https://github.com/dozer-io/bosh-gui) by [dozer.io](https://dozer.io/)
 
 ## Usage
 
