@@ -25,6 +25,12 @@ templates/make_manifest aws-ec2
 bosh -n deploy
 ```
 
+When the deploy has finished you can open 'The GUI for BOSH' in your browser:
+
+```
+open "http://$(bosh vms 2>&1 | grep 'bosh-gui/0' | cut -d ' ' -f11)"
+```
+
 ### Override security groups
 
 For AWS & Openstack, the default deployment assumes there is a `default` security group. If you wish to use a different security group(s) then you can pass in additional configuration when running `make_manifest` above.
