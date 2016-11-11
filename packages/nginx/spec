@@ -1,6 +1,7 @@
 ---
 name: nginx
-dependencies: []
+dependencies:
+  - lua
 files:
   - nginx/*
 

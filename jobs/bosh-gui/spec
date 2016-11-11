@@ -1,6 +1,7 @@
 ---
 name: bosh-gui
 packages:
+  - lua
   - nginx
   - bosh-gui
 templates:
